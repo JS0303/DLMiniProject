@@ -9,40 +9,108 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<style>
+  body {
+    background-color: #b5a5e0;
+  }
+
+  .bg-secondary {
+    background-color: #b5a5e0!important;
+  }
+  .float-right {
+    margin: 1rem;
+    color: #f3f2f7;
+    background-color: #b5a5e0;
+    border-color: #b5a5e0;
+    }
+  .p-5{
+    padding: 2rem!important;
+  }
+</style>
+
+
 <body>
+  <div class="modal modal-signin position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header p-5 pb-4 border-bottom-0">
+          <h4 class="modal-title">심부전증: 심장의 기능 저하로 신체에 혈액을 제대로 공급하지 못해서 생기는 질환</h4>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body p-5 pt-0">
+          <h6 class="fw-bold mb-12">아래 정보들을 입력하고 당신의 심부전 발생 확률을 예측하세요.</h6>
+          <hr class="my-4">
+          <div class="container">
 
-<div class="container">
+            <!-- <img src="{{url_for('static', filename='heart1.jpeg')}}" align="middle"/> -->
+          
+            <form action="HeartDisease">
+              <div class="form-group">
+                <label for="Age">나이</label>
+                <input type="text" class="form-control" id="Age" placeholder="나이를 입력하세요." name="Age" width: 75%>
+              </div>
+          
+              <div class="form-group">
+                <label for="RestingBP">안정 혈압</label>
+                <input type="text" class="form-control" id="RestingBP" placeholder="안정시 혈압을 입력하세요." name="RestingBP">
+              </div>
+          
+              <div class="form-group">
+                <label for="Cholesterol">콜레스테롤</label>
+                <input type="text" class="form-control" id="Cholesterol" placeholder="콜레스테롤 수치를 입력하세요." name="Cholesterol">
+              </div>
+          
+              <div class="form-group">
+                <label for="MaxHR">최대심박수</label>
+                <input type="text" class="form-control" id="MaxHR" placeholder="최대심박수를 입력하세요." name="MaxHR">
+              </div>    
+          
+              <div class="form-group">
+                <label for="FastingBS">공복혈당</label>
+                <select name="FastingBS" id="FastingBS">
+                  <option value="0">없음</option>
+                  <option value="1">있음</option>
+                </select>
+              </div>
+          
+              <button type="submit" class="btn float-right">제출</button>
+            </form>
+          </div>
+            <button type="button" class="btn float-right">당신의 심부전증 발병 확률은 {{ Output }} % 입니다.</button>
+          
+          <!-- <form class="">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+            <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small> -->
+            <!-- <hr class="my-4">
+            <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+            <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
+              <svg class="bi me-1" width="16" height="16"><use xlink:href="#twitter"></use></svg>
+              Sign up with Twitter
+            </button>
+            <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+              <svg class="bi me-1" width="16" height="16"><use xlink:href="#facebook"></use></svg>
+              Sign up with Facebook
+            </button>
+            <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">
+              <svg class="bi me-1" width="16" height="16"><use xlink:href="#github"></use></svg>
+              Sign up with GitHub
+            </button> -->
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="align-middle">
   
-
-  <img src="{{url_for('static', filename='heart1.jpeg')}}" align="center"/>
-
-  <form action="HeartDisease">
-    <div class="form-group">
-      <label for="Age">나이</label>
-      <input type="text" class="form-control" id="Age" placeholder="나이를 입력하세요." name="Age" width: 75%>
-    </div>
-
-    <div class="form-group">
-      <label for="RestingBP">안정 혈압</label>
-      <input type="text" class="form-control" id="RestingBP" placeholder="안정시 혈압을 입력하세요." name="RestingBP">
-    </div>
-
-    <div class="form-group">
-      <label for="Cholesterol">콜레스테롤</label>
-      <input type="text" class="form-control" id="Cholesterol" placeholder="콜레스테롤 수치를 입력하세요." name="Cholesterol">
-    </div>
-    <div class="form-group">
-      <label for="MaxHR">최대심박수</label>
-      <input type="text" class="form-control" id="MaxHR" placeholder="최대심박수를 입력하세요." name="MaxHR">
-    </div>
-
-    <button type="submit" class="btn btn-primary">제출</button>
-  </form>
-
-  <button type="button" class="btn btn-warning">당신의 심부전증 발병 확률은 {{ Output }}% 입니다.</button>
-</div>
-
-
+  </span>
 
 </body>
 </html>
